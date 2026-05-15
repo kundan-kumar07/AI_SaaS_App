@@ -34,7 +34,7 @@ export const generateArcticle = async (req, res) => {
         },
       ],
       temperature: 0.7,
-      max_completion_tokens: length,
+      max_tokens: length,
     });
 
     const content = response.choices[0].message.content;
@@ -49,7 +49,7 @@ export const generateArcticle = async (req, res) => {
 
     res.json({ success: true, content });
   } catch (error) {
-    console.log(error.message);
+    console.log(error.response?.data || error);
     res.json({ success: false, message: error.message });
   }
 };
@@ -77,7 +77,7 @@ export const generateBlogTitle = async (req, res) => {
         },
       ],
       temperature: 0.7,
-      max_completion_tokens: 100,
+      max_tokens: 100,
     });
 
     const content = response.choices[0].message.content;
@@ -92,7 +92,7 @@ export const generateBlogTitle = async (req, res) => {
 
     res.json({ success: true, content });
   } catch (error) {
-    console.log(error.message);
+    console.log(error.response?.data || error);
     res.json({ success: false, message: error.message });
   }
 };
@@ -123,7 +123,7 @@ export const removeImageBackground = async (req, res) => {
 
     res.json({ success: true, content: secure_url });
   } catch (error) {
-    console.log(error.message);
+    console.log(error.response?.data || error);
     res.json({ success: false, message: error.message });
   }
 };
@@ -163,7 +163,7 @@ export const generateImage = async (req, res) => {
 
     res.json({ success: true, content: secure_url });
   } catch (error) {
-    console.log(error.message);
+    console.log(error.response?.data || error);
     res.json({ success: false, message: error.message });
   }
 };
@@ -194,7 +194,7 @@ export const removeImageObject = async (req, res) => {
 
     res.json({ success: true, content: imageUrl });
   } catch (error) {
-    console.log(error.message);
+    console.log(error.response?.data || error);
     res.json({ success: false, message: error.message });
   }
 };
@@ -230,7 +230,7 @@ export const resumeReview = async (req, res) => {
         },
       ],
       temperature: 0.7,
-      max_completion_tokens: 1000,
+      max_tokens: 1000,
     });
 
     const content = response.choices[0].message.content;
@@ -241,7 +241,7 @@ export const resumeReview = async (req, res) => {
 
     res.json({ success: true, content: content });
   } catch (error) {
-    console.log(error.message);
+    console.log(error.response?.data || error);
     res.json({ success: false, message: error.message });
   }
 };
@@ -270,7 +270,7 @@ export const textSummarizer = async (req, res) => {
         },
       ],
       temperature: 0.7,
-      max_completion_tokens: 1000,
+      max_tokens: 1000,
     });
 
     const content = response.choices[0].message.content;
@@ -285,7 +285,7 @@ export const textSummarizer = async (req, res) => {
 
     res.json({ success: true, content });
   } catch (error) {
-    console.log(error.message);
+    console.log(error.response?.data || error);
     res.json({ success: false, message: error.message });
   }
 };
